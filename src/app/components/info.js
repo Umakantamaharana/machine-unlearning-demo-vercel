@@ -3,7 +3,7 @@ import { TypeAnimation } from "react-type-animation";
 export default function Info() {
     return (
         <>
-            <div className="p-2 flex flex-col w-3/12 border border-green-700 rounded-md">
+            <div className="ml-2 p-2 flex flex-col w-3/12 border border-green-700 rounded-md">
                 <span className="border-b border-green-700 flex">
                     <span className="p-2 flex items-center justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
@@ -19,7 +19,7 @@ export default function Info() {
                     className="p-5"
                     wrapper="span"
                     speed={50}
-                    style={{ fontSize: '1em', display: 'inline-block', color: 'lawngreen', background: '#00000038' }}
+                    style={{ fontSize: '1em', display: 'inline-block', color: 'lawngreen', background: '#000000' }}
                     repeat={0}
                 />
             </div>
