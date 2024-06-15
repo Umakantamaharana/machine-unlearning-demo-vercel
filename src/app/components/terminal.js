@@ -1,4 +1,4 @@
-export default function Terminal() {
+export default function Terminal({ commands }) {
     return (
         <>
             <div className="bg-gray-800 p-1 flex flex-col items-start justify-center h-full w-full border-t border-black">
@@ -10,8 +10,11 @@ export default function Terminal() {
                     </span>
                     <span className="p-2 w-full">Terminal</span>
                 </span>
-                <div className="p-2 border-t border-black bg-black h-full w-full">
-                    <span>Terminal</span>
+                <div className="p-2 border-t border-black bg-black h-full w-full overflow-y-auto">
+                    <span>{commands.map((command, index) => (
+                        <div key={index}>{command}</div>
+                    ))}
+                    </span>
                 </div>
             </div>
         </>
