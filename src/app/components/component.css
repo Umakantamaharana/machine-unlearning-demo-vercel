@@ -32,6 +32,49 @@ html {
   perspective: 800px;
 }
 
+.playground>div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.playground div canvas {
+  padding: 10px;
+  margin: 20px;
+  /* border: 5px double green; */
+  border-radius: 10px;
+}
+
+.mul-demo {
+  display: flex;
+  position: relative;
+  width: auto;
+  height: 350px;
+  padding: 5px;
+  margin: 10px;
+  /* border: 1px solid green; */
+  justify-content: space-evenly;
+}
+
+.dataset,
+.model {
+  border: 1px solid green;
+  margin: 0px 10px 0px 10px;
+}
+
+.dataset>div {
+  border: 1px solid blue;
+  padding: 2px;
+  margin: 2px;
+}
+
+.model {
+  display: block;
+  border: 2px solid blue;
+  padding: 3px;
+}
+
 .inner {
   position: absolute;
   box-sizing: border-box;

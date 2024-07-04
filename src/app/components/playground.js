@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Loading from "./loading";
 import Image from "next/image";
 import BarChart from "./barchart";
+import PeopleCard from "./people-card";
 
 const Playground = ({ addCommand, updateInfo, updateReference }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -174,10 +175,24 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
 
       {isLoading && <Loading />}
 
-      <div className="mt-2 h-full w-full border border-green-700 rounded-md flex justify-center items-center relative">
+      <div className="playground mt-2 h-full w-full border border-green-700 rounded-md flex justify-center items-center relative">
         {/* Choose Dataset */}
         {buttonId === 0 ? (
           <div className="flex flex-col">
+            {/* <div style={{
+              position: 'relative',
+              width: '100%',
+              height: '0',
+              paddingTop: '100.0000%',
+              paddingBottom: '0',
+              boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)',
+              marginTop: '1.6em',
+              marginBottom: '0.9em',
+              overflow: 'hidden',
+              borderRadius: '8px',
+              willChange: 'transform'
+            }}>
+            </div> */}
             <div className="flex">
               {datasets.map((dataset, index) => (
                 <label key={index} className={`m-2 p-2 w-20 border rounded-md text-center cursor-pointer ${selectedDataset === index ? 'bg-blue-500 text-white' : 'bg-green-500 text-black'
@@ -203,6 +218,20 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
           // Load Dataset
           : buttonId === 1 ? (
             <div>
+              <div className="flex flex-row">
+                <PeopleCard src={'/people/HelenHunt_10.jpg'} name={'HelenHunt'} age={'23'} />
+                <PeopleCard src={'/people/HelenHunt_12.jpg'} name={'HelenHunt'} age={'30'} />
+                <PeopleCard src={'/people/HelenHunt_20.jpg'} name={'HelenHunt'} age={'37'} />
+                <PeopleCard src={'/people/HelenHunt_35.jpg'} name={'HelenHunt'} age={'51'} />
+                <PeopleCard src={'/people/HelenHunt_50.jpg'} name={'HelenHunt'} age={'64'} />
+              </div>
+              <div className="flex flex-row">
+                <PeopleCard src={'/people/GoldieHawn_23.jpg'} name={'GoldieHawn'} age={'23'} />
+                <PeopleCard src={'/people/GoldieHawn_30.jpg'} name={'GoldieHawn'} age={'30'} />
+                <PeopleCard src={'/people/GoldieHawn_37.jpg'} name={'GoldieHawn'} age={'37'} />
+                <PeopleCard src={'/people/GoldieHawn_51.jpg'} name={'GoldieHawn'} age={'51'} />
+                <PeopleCard src={'/people/GoldieHawn_64.jpg'} name={'GoldieHawn'} age={'64'} />
+              </div>
               <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
                 <span>Dataset : {datasets[datasetId]}</span>
               </div>
@@ -246,6 +275,13 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
                     <span>Model : {models[modelId]}</span>
                     <span>Epochs : 100</span>
                   </div>
+                  <div className="mul-demo">
+                    <Image src={'demo-svg/mul-load-data-model.svg'} alt="load-data"
+                      width="0"
+                      height="0"
+                      sizes="100vw"
+                      className="w-full h-auto" />
+                  </div>
                   <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={stateChange}>
                     {buttons[buttonId]}
                   </button>
@@ -258,6 +294,13 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
                       <span>Dataset : {datasets[datasetId]}</span>
                       <span>Model : {models[modelId]}</span>
                       <span>Epochs : 100</span>
+                    </div>
+                    <div className="mul-demo">
+                      <Image src={'demo-svg/mul-train-model.svg'} alt="load-data"
+                        width="0"
+                        height="0"
+                        sizes="100vw"
+                        className="w-full h-auto" />
                     </div>
                     <div className="flex flex-col">
                       <div className="flex">
@@ -293,6 +336,13 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
                         <span>Forget Data : {selections[selectionId]}</span>
                         <span>Retain Data : 31-100</span>
                       </div>
+                      <div className="mul-demo">
+                        <Image src={'demo-svg/mul-forget-retain.svg'} alt="load-data"
+                          width="0"
+                          height="0"
+                          sizes="100vw"
+                          className="w-full h-auto" />
+                      </div>
                       <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={stateChange}>
                         {buttons[buttonId]}
                       </button>
@@ -309,6 +359,13 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
                           <span>Retain Data : 31-100</span>
                           <span>Forget Data Loss : <b style={{ background: 'black' }}>12.76</b></span>
                           <span>Retain Data Loss : <b style={{ background: 'black' }}>9.33</b></span>
+                        </div>
+                        <div className="mul-demo">
+                          <Image src={'demo-svg/mul-evaluate-model.svg'} alt="load-data"
+                            width="0"
+                            height="0"
+                            sizes="100vw"
+                            className="w-full h-auto" />
                         </div>
                         <div>
                           <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={stateChange}>
@@ -330,6 +387,13 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
                             <span>Retain Data Loss : <b style={{ background: 'black' }}>9.33</b></span>
                             <span>Blindspot Model : {models[modelId]}</span>
                             <span>Epochs : 2</span>
+                          </div>
+                          <div className="mul-demo">
+                            <Image src={'demo-svg/mul-blindspot-train.svg'} alt="load-data"
+                              width="0"
+                              height="0"
+                              sizes="100vw"
+                              className="w-full h-auto" />
                           </div>
                           <div>
                             <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={stateChange}>
@@ -386,6 +450,13 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
                               <span>Gold Model : {models[modelId]}</span>
                               <span>Epochs : 1</span>
                             </div>
+                            <div className="mul-demo">
+                              <Image src={'demo-svg/mul-unlearning.svg'} alt="load-data"
+                                width="0"
+                                height="0"
+                                sizes="100vw"
+                                className="w-full h-auto" />
+                            </div>
                             <div>
                               <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={stateChange}>
                                 {buttons[buttonId]}
@@ -412,6 +483,13 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
                                 <span>Epochs : 1</span>
                                 <span>Forget Data Loss : <b style={{ background: 'black' }}>24.30</b></span>
                                 <span>Retain Data Loss : <b style={{ background: 'black' }}>11.38</b></span>
+                              </div>
+                              <div className="mul-demo">
+                                <Image src={'demo-svg/mul-gold-train.svg'} alt="load-data"
+                                  width="0"
+                                  height="0"
+                                  sizes="100vw"
+                                  className="w-full h-auto" />
                               </div>
                               <div>
                                 <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={stateChange}>
@@ -440,9 +518,12 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
                                   <span>Forget Data Loss : <b style={{ background: 'black' }}>24.30</b></span>
                                   <span>Retain Data Loss : <b style={{ background: 'black' }}>11.38</b></span>
                                 </div>
-                                <div className="m-1 text-center">
-                                  <h1 className="text-xl font-bold mb-4">Loss Comparison Chart</h1>
-                                  <BarChart />
+                                <div className="mul-demo">
+                                  <Image src={'demo-svg/mul-evaluate-all-model.svg'} alt="load-data"
+                                    width="0"
+                                    height="0"
+                                    sizes="100vw"
+                                    className="w-full h-auto" />
                                 </div>
                                 <div>
                                   <button className="m-3 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={stateChange}>
@@ -467,14 +548,18 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
                                   <span>Forget Data Loss : <b style={{ background: 'black' }}>24.30</b></span>
                                   <span>Retain Data Loss : <b style={{ background: 'black' }}>11.38</b></span>
                                 </div>
-                                <Image
+                                <div className="m-1 text-center" style={{ width: '600px' }}>
+                                  <h1 className="text-xl font-bold mb-4">Loss Comparison Chart</h1>
+                                  <BarChart />
+                                </div>
+                                {/* <Image
                                   src="/results.png"
                                   alt="Results"
                                   width={600}
                                   height={400}
                                   style={{ border: '2px solid green', borderRadius: '10px', padding: '10px' }}
                                   className="m-3"
-                                />
+                                /> */}
                                 <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={() => { window.location.reload() }}>
                                   HomePage
                                 </button>

@@ -7,7 +7,7 @@ import Playground from "./components/playground";
 import Loading from "./components/loading";
 
 export default function Home() {
-  
+
 
   useEffect(() => {
     const handleContextMenu = (event) => {

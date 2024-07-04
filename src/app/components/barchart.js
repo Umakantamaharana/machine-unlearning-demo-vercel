@@ -1,28 +1,31 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import { Margarine } from 'next/font/google';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const BarChart = () => {
     const data = {
-        labels: ['Original Model', 'Gold Model', 'Unlearned Model'],
+        labels: ['Original Model', 'Gold Model', 'Unlearned Model', 'FineTune', 'Gaussian Amn'],
         datasets: [
             {
                 label: 'Retain Loss',
-                data: [9.33, 11.38, 9.97],
+                data: [9.33, 11.38, 9.97, 9.79, 9.81],
                 backgroundColor: 'rgba(54, 162, 235, 0.5)',
                 // borderColor: 'rgba(54, 162, 235, 1)',
                 borderColor: 'green',
                 borderWidth: 1,
+                barThickness: 30,
             },
             {
                 label: 'Forget Loss',
-                data: [12.76, 24.30, 21.63],
+                data: [12.76, 24.30, 21.63, 14.82, 17.06],
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
                 // borderColor: 'rgba(255, 99, 132, 1)',
                 borderColor: 'green',
                 borderWidth: 1,
+                barThickness: 30,
             },
         ],
     };
@@ -45,7 +48,7 @@ const BarChart = () => {
         },
     };
 
-    return <Bar data={data} options={options} height={300}/>;
+    return <Bar data={data} options={options} height={200} />;
 };
 
 export default BarChart;
