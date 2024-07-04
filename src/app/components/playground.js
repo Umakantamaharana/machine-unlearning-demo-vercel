@@ -280,7 +280,7 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
                       width="0"
                       height="0"
                       sizes="100vw"
-                      className="w-full h-auto" />
+                      className="mul-image w-full h-auto" />
                   </div>
                   <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={stateChange}>
                     {buttons[buttonId]}
@@ -300,7 +300,7 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
                         width="0"
                         height="0"
                         sizes="100vw"
-                        className="w-full h-auto" />
+                        className="mul-image w-full h-auto" />
                     </div>
                     <div className="flex flex-col">
                       <div className="flex">
@@ -341,7 +341,7 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
                           width="0"
                           height="0"
                           sizes="100vw"
-                          className="w-full h-auto" />
+                          className="mul-image w-full h-auto" />
                       </div>
                       <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={stateChange}>
                         {buttons[buttonId]}
@@ -365,7 +365,7 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
                             width="0"
                             height="0"
                             sizes="100vw"
-                            className="w-full h-auto" />
+                            className="mul-image w-full h-auto" />
                         </div>
                         <div>
                           <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={stateChange}>
@@ -393,7 +393,7 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
                               width="0"
                               height="0"
                               sizes="100vw"
-                              className="w-full h-auto" />
+                              className="mul-image w-full h-auto" />
                           </div>
                           <div>
                             <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={stateChange}>
@@ -455,7 +455,7 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
                                 width="0"
                                 height="0"
                                 sizes="100vw"
-                                className="w-full h-auto" />
+                                className="mul-image w-full h-auto" />
                             </div>
                             <div>
                               <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={stateChange}>
@@ -489,7 +489,7 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
                                   width="0"
                                   height="0"
                                   sizes="100vw"
-                                  className="w-full h-auto" />
+                                  className="mul-image w-full h-auto" />
                               </div>
                               <div>
                                 <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={stateChange}>
@@ -523,7 +523,7 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
                                     width="0"
                                     height="0"
                                     sizes="100vw"
-                                    className="w-full h-auto" />
+                                    className="mul-image w-full h-auto" />
                                 </div>
                                 <div>
                                   <button className="m-3 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={stateChange}>
@@ -548,7 +548,7 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
                                   <span>Forget Data Loss : <b style={{ background: 'black' }}>24.30</b></span>
                                   <span>Retain Data Loss : <b style={{ background: 'black' }}>11.38</b></span>
                                 </div>
-                                <div className="m-1 text-center" style={{ width: '600px' }}>
+                                <div className="m-1 text-center" style={{ width: '500px' }}>
                                   <h1 className="text-xl font-bold mb-4">Loss Comparison Chart</h1>
                                   <BarChart />
                                 </div>

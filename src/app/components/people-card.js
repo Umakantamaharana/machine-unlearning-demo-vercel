@@ -3,8 +3,8 @@ import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
 
 export default function PeopleCard(props) {
   return (
-    <Card className="py-4">
-      <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+    <Card className="py-2">
+      <CardHeader className="pb-0 pt-2 px-2 flex-col items-start">
         <p className="text-tiny uppercase font-bold">{props.age}</p>
         <h4 className="font-bold text-large">{props.name}</h4>
       </CardHeader>
@@ -13,7 +13,7 @@ export default function PeopleCard(props) {
           alt="Card background"
           className="object-cover rounded-xl"
           src={props.src}
-          width={100}
+          width={50}
         />
       </CardBody>
     </Card>
