@@ -16,7 +16,8 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
   const [selectedSelection, setSelectedSelection] = useState(null);
   const [reference, setReference] = useState(["No referecne !"]);
 
-  const datasets = ["AgeDB", "IMDBWiki", "CIFAR100"];
+  // const datasets = ["AgeDB", "IMDBWiki", "CIFAR100"];
+  const datasets = ["AgeDB"]
 
   const dataset_info = [
     "AgeDB (Age Database) is a dataset specifically curated for age estimation tasks, offering high-quality images of faces annotated with age labels. The dataset comprises 16,488 images, capturing a broad age range from 0 to 101 years. Each image in AgeDB is meticulously annotated with the age of the person depicted, making it an invaluable resource for age estimation and facial recognition studies. This dataset supports research in age-invariant face recognition and other applications requiring precise age information. AgeDB is generally available for research purposes under specific licenses or upon request, contributing significantly to advancements in the field of age estimation.",
@@ -58,7 +59,8 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
     setModel(index);
   };
 
-  const selections = ["1-30", "31-70", "71-100"];
+  // const selections = ["1-30", "31-70", "71-100"];
+  const selections = ["1-30"];
 
   const selections_info = [
     "Model will forget faces of person from age 1 to 30. And it can only identify person from 31 to 100.",
