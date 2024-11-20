@@ -83,7 +83,7 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
     "Start Unlearning",
     "Train Gold Model",
     "Compare Three Models",
-    "See Full Results",
+    "More Info",
   ];
 
   const commands = [
@@ -111,16 +111,16 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
       } else if (buttonId === 1) {
         updateInfo(
           "Choose a model to train on " +
-            datasets[datasetId] +
-            ". Click on any model to know its architecture."
+          datasets[datasetId] +
+          ". Click on any model to know its architecture."
         );
       } else if (buttonId === 2) {
         updateInfo(
           "You have choosen " +
-            datasets[datasetId] +
-            " dataset and " +
-            models[modelId] +
-            " model."
+          datasets[datasetId] +
+          " dataset and " +
+          models[modelId] +
+          " model."
         );
       } else if (buttonId === 3) {
         updateInfo(
@@ -133,8 +133,8 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
       } else if (buttonId === 5) {
         updateInfo(
           "Now train the retain dataset using " +
-            models[modelId] +
-            " model for a few epochs. We will call this as a blindspot model as it has not seen the forget set of data."
+          models[modelId] +
+          " model for a few epochs. We will call this as a blindspot model as it has not seen the forget set of data."
         );
       } else if (buttonId === 6) {
         updateInfo("Now Unlearn the trained model using blindspot model.");
@@ -149,14 +149,18 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
       else if (buttonId === 8) {
         updateInfo(
           "We have three models to compare. Trained " +
-            models[modelId] +
-            " model, Gold standard model and Unlearned model."
+          models[modelId] +
+          " model, Gold standard model and Unlearned model."
         );
       } else if (buttonId === 9) {
         updateInfo(
           "This is the end of the demo. You can see the full results by clicking the button."
         );
       } else if (buttonId === 10) {
+        updateInfo(
+          "See the Citations & More Info"
+        );
+      } else if (buttonId === 11) {
         updateInfo(
           "You can restart the demo by clicking on the HomePage button."
         );
@@ -199,11 +203,10 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
               {datasets.map((dataset, index) => (
                 <label
                   key={index}
-                  className={`m-2 p-2 w-20 border rounded-md text-center cursor-pointer ${
-                    selectedDataset === index
-                      ? "bg-blue-500 text-white"
-                      : "bg-green-500 text-black"
-                  } hover:bg-green-600 active:bg-blue-600`}
+                  className={`m-2 p-2 w-20 border rounded-md text-center cursor-pointer ${selectedDataset === index
+                    ? "bg-blue-500 text-white"
+                    : "bg-green-500 text-black"
+                    } hover:bg-green-600 active:bg-blue-600`}
                 >
                   <input
                     type="radio"
@@ -225,509 +228,570 @@ const Playground = ({ addCommand, updateInfo, updateReference }) => {
             </button>
           </div>
         ) : // Load Dataset
-        buttonId === 1 ? (
-          <div>
-            <div className="flex flex-row">
-              <PeopleCard
-                src={"/people/HelenHunt_10.jpg"}
-                name={"HelenHunt"}
-                age={"23"}
-              />
-              <PeopleCard
-                src={"/people/HelenHunt_12.jpg"}
-                name={"HelenHunt"}
-                age={"30"}
-              />
-              <PeopleCard
-                src={"/people/HelenHunt_20.jpg"}
-                name={"HelenHunt"}
-                age={"37"}
-              />
-              <PeopleCard
-                src={"/people/HelenHunt_35.jpg"}
-                name={"HelenHunt"}
-                age={"51"}
-              />
-              <PeopleCard
-                src={"/people/HelenHunt_50.jpg"}
-                name={"HelenHunt"}
-                age={"64"}
-              />
+          buttonId === 1 ? (
+            <div>
+              <div className="flex flex-row">
+                <PeopleCard
+                  src={"/people/HelenHunt_10.jpg"}
+                  name={"HelenHunt"}
+                  age={"23"}
+                />
+                <PeopleCard
+                  src={"/people/HelenHunt_12.jpg"}
+                  name={"HelenHunt"}
+                  age={"30"}
+                />
+                <PeopleCard
+                  src={"/people/HelenHunt_20.jpg"}
+                  name={"HelenHunt"}
+                  age={"37"}
+                />
+                <PeopleCard
+                  src={"/people/HelenHunt_35.jpg"}
+                  name={"HelenHunt"}
+                  age={"51"}
+                />
+                <PeopleCard
+                  src={"/people/HelenHunt_50.jpg"}
+                  name={"HelenHunt"}
+                  age={"64"}
+                />
+              </div>
+              <div className="flex flex-row">
+                <PeopleCard
+                  src={"/people/GoldieHawn_23.jpg"}
+                  name={"GoldieHawn"}
+                  age={"23"}
+                />
+                <PeopleCard
+                  src={"/people/GoldieHawn_30.jpg"}
+                  name={"GoldieHawn"}
+                  age={"30"}
+                />
+                <PeopleCard
+                  src={"/people/GoldieHawn_37.jpg"}
+                  name={"GoldieHawn"}
+                  age={"37"}
+                />
+                <PeopleCard
+                  src={"/people/GoldieHawn_51.jpg"}
+                  name={"GoldieHawn"}
+                  age={"51"}
+                />
+                <PeopleCard
+                  src={"/people/GoldieHawn_64.jpg"}
+                  name={"GoldieHawn"}
+                  age={"64"}
+                />
+              </div>
+              <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
+                <span>Dataset : {datasets[datasetId]}</span>
+              </div>
+              <button
+                className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+                onClick={stateChange}
+              >
+                {buttons[buttonId]}
+              </button>
             </div>
-            <div className="flex flex-row">
-              <PeopleCard
-                src={"/people/GoldieHawn_23.jpg"}
-                name={"GoldieHawn"}
-                age={"23"}
-              />
-              <PeopleCard
-                src={"/people/GoldieHawn_30.jpg"}
-                name={"GoldieHawn"}
-                age={"30"}
-              />
-              <PeopleCard
-                src={"/people/GoldieHawn_37.jpg"}
-                name={"GoldieHawn"}
-                age={"37"}
-              />
-              <PeopleCard
-                src={"/people/GoldieHawn_51.jpg"}
-                name={"GoldieHawn"}
-                age={"51"}
-              />
-              <PeopleCard
-                src={"/people/GoldieHawn_64.jpg"}
-                name={"GoldieHawn"}
-                age={"64"}
-              />
-            </div>
-            <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
-              <span>Dataset : {datasets[datasetId]}</span>
-            </div>
-            <button
-              className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-              onClick={stateChange}
-            >
-              {buttons[buttonId]}
-            </button>
-          </div>
-        ) : // Choose Model
-        buttonId === 2 ? (
-          <div className="flex flex-col">
-            <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
-              <span>Dataset : {datasets[datasetId]}</span>
-            </div>
-            <div className="flex">
-              {models.map((model, index) => (
-                <label
-                  key={index}
-                  className={`m-2 p-2 w-20 border rounded-md text-center cursor-pointer ${
-                    selectedModel === index
-                      ? "bg-blue-500 text-white"
-                      : "bg-green-500 text-black"
-                  } hover:bg-green-600 active:bg-blue-600`}
-                >
-                  <input
-                    type="radio"
-                    className="hidden"
-                    id={`radio-${index}`}
-                    name="model"
-                    value={model}
-                    onClick={() => handleRadioClickModel(index)}
-                  />
-                  {model}
-                </label>
-              ))}
-            </div>
-            <button
-              className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-              onClick={stateChange}
-            >
-              {buttons[buttonId]}
-            </button>
-          </div>
-        ) : // Start Training
-        buttonId === 3 ? (
-          <div>
-            <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
-              <span>Dataset : {datasets[datasetId]}</span>
-              <span>Model : {models[modelId]}</span>
-              <span>Epochs : 100</span>
-            </div>
-            <div className="mul-demo">
-              <Image
-                src={"demo-svg/mul-load-data-model.svg"}
-                alt="load-data"
-                width="0"
-                height="0"
-                sizes="100vw"
-                className="mul-image w-full h-auto"
-              />
-            </div>
-            <button
-              className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-              onClick={stateChange}
-            >
-              {buttons[buttonId]}
-            </button>
-          </div>
-        ) : // Select age-group
-        buttonId === 4 ? (
-          <div>
-            <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
-              <span>Dataset : {datasets[datasetId]}</span>
-              <span>Model : {models[modelId]}</span>
-              <span>Epochs : 100</span>
-            </div>
-            <div className="mul-demo">
-              <Image
-                src={"demo-svg/mul-train-model.svg"}
-                alt="load-data"
-                width="0"
-                height="0"
-                sizes="100vw"
-                className="mul-image w-full h-auto"
-              />
-            </div>
-            <div className="flex flex-col">
-              <div className="flex">
-                {selections.map((selection, index) => (
-                  <label
-                    key={index}
-                    className={`m-2 p-2 w-20 border rounded-md text-center cursor-pointer ${
-                      selectedSelection === index
+          ) : // Choose Model
+            buttonId === 2 ? (
+              <div className="flex flex-col">
+                <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
+                  <span>Dataset : {datasets[datasetId]}</span>
+                </div>
+                <div className="flex">
+                  {models.map((model, index) => (
+                    <label
+                      key={index}
+                      className={`m-2 p-2 w-20 border rounded-md text-center cursor-pointer ${selectedModel === index
                         ? "bg-blue-500 text-white"
                         : "bg-green-500 text-black"
-                    } hover:bg-green-600 active:bg-blue-600`}
-                  >
-                    <input
-                      type="radio"
-                      className="hidden"
-                      id={`radio-${index}`}
-                      name="selection"
-                      value={selection}
-                      onClick={() => handleRadioClickSelection(index)}
-                    />
-                    {selection}
-                  </label>
-                ))}
+                        } hover:bg-green-600 active:bg-blue-600`}
+                    >
+                      <input
+                        type="radio"
+                        className="hidden"
+                        id={`radio-${index}`}
+                        name="model"
+                        value={model}
+                        onClick={() => handleRadioClickModel(index)}
+                      />
+                      {model}
+                    </label>
+                  ))}
+                </div>
+                <button
+                  className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+                  onClick={stateChange}
+                >
+                  {buttons[buttonId]}
+                </button>
               </div>
+            ) : // Start Training
+              buttonId === 3 ? (
+                <div>
+                  <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
+                    <span>Dataset : {datasets[datasetId]}</span>
+                    <span>Model : {models[modelId]}</span>
+                    <span>Epochs : 100</span>
+                  </div>
+                  <div className="mul-demo">
+                    <Image
+                      src={"demo-svg/mul-load-data-model.svg"}
+                      alt="load-data"
+                      width="0"
+                      height="0"
+                      sizes="100vw"
+                      className="mul-image w-full h-auto"
+                    />
+                  </div>
+                  <button
+                    className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+                    onClick={stateChange}
+                  >
+                    {buttons[buttonId]}
+                  </button>
+                </div>
+              ) : // Select age-group
+                buttonId === 4 ? (
+                  <div>
+                    <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
+                      <span>Dataset : {datasets[datasetId]}</span>
+                      <span>Model : {models[modelId]}</span>
+                      <span>Epochs : 100</span>
+                    </div>
+                    <div className="mul-demo">
+                      <Image
+                        src={"demo-svg/mul-train-model.svg"}
+                        alt="load-data"
+                        width="0"
+                        height="0"
+                        sizes="100vw"
+                        className="mul-image w-full h-auto"
+                      />
+                    </div>
+                    <div className="flex flex-col">
+                      <div className="flex">
+                        {selections.map((selection, index) => (
+                          <label
+                            key={index}
+                            className={`m-2 p-2 w-20 border rounded-md text-center cursor-pointer ${selectedSelection === index
+                              ? "bg-blue-500 text-white"
+                              : "bg-green-500 text-black"
+                              } hover:bg-green-600 active:bg-blue-600`}
+                          >
+                            <input
+                              type="radio"
+                              className="hidden"
+                              id={`radio-${index}`}
+                              name="selection"
+                              value={selection}
+                              onClick={() => handleRadioClickSelection(index)}
+                            />
+                            {selection}
+                          </label>
+                        ))}
+                      </div>
 
-              <button
-                className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-                onClick={stateChange}
-              >
-                {buttons[buttonId]}
-              </button>
-            </div>
-          </div>
-        ) : // Evaluate Model
-        buttonId === 5 ? (
-          <div>
-            <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
-              <span>Dataset : {datasets[datasetId]}</span>
-              <span>Model : {models[modelId]}</span>
-              <span>Epochs : 100</span>
-              <span>Forget Data : {selections[selectionId]}</span>
-              <span>Retain Data : 31-100</span>
-            </div>
-            <div className="mul-demo">
-              <Image
-                src={"demo-svg/mul-forget-retain.svg"}
-                alt="load-data"
-                width="0"
-                height="0"
-                sizes="100vw"
-                className="mul-image w-full h-auto"
-              />
-            </div>
-            <button
-              className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-              onClick={stateChange}
-            >
-              {buttons[buttonId]}
-            </button>
-          </div>
-        ) : // Train blindspot model
-        buttonId === 6 ? (
-          <div>
-            <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
-              <span>Dataset : {datasets[datasetId]}</span>
-              <span>Model : {models[modelId]}</span>
-              <span>Epochs : 100</span>
-              <span>Forget Data : {selections[selectionId]}</span>
-              <span>Retain Data : 31-100</span>
-              <span>
-                Forget Data Loss : <b style={{ background: "black" }}>12.76</b>
-              </span>
-              <span>
-                Retain Data Loss : <b style={{ background: "black" }}>9.33</b>
-              </span>
-            </div>
-            <div className="mul-demo">
-              <Image
-                src={"demo-svg/mul-evaluate-model.svg"}
-                alt="load-data"
-                width="0"
-                height="0"
-                sizes="100vw"
-                className="mul-image w-full h-auto"
-              />
-            </div>
-            <div>
-              <button
-                className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-                onClick={stateChange}
-              >
-                {buttons[buttonId]}
-              </button>
-            </div>
-          </div>
-        ) : // Start Unlearning
-        buttonId === 7 ? (
-          <div>
-            <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
-              <span>Dataset : {datasets[datasetId]}</span>
-              <span>Model : {models[modelId]}</span>
-              <span>Epochs : 100</span>
-              <span>Forget Data : {selections[selectionId]}</span>
-              <span>Retain Data : 31-100</span>
-              <span>
-                Forget Data Loss : <b style={{ background: "black" }}>12.76</b>
-              </span>
-              <span>
-                Retain Data Loss : <b style={{ background: "black" }}>9.33</b>
-              </span>
-              <span>Blindspot Model : {models[modelId]}</span>
-              <span>Epochs : 2</span>
-            </div>
-            <div className="mul-demo">
-              <Image
-                src={"demo-svg/mul-blindspot-train.svg"}
-                alt="load-data"
-                width="0"
-                height="0"
-                sizes="100vw"
-                className="mul-image w-full h-auto"
-              />
-            </div>
-            <div>
-              <button
-                className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-                onClick={stateChange}
-              >
-                {buttons[buttonId]}
-              </button>
-            </div>
-          </div>
-        ) : // Compare Testing results
-        // : buttonId === 8 ? (
-        //   <div>
-        //     <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
-        //       <span>Dataset : {datasets[datasetId]}</span>
-        //       <span>Model : {models[modelId]}</span>
-        //       <span>Epochs : 100</span>
-        //       <span>Training Loss : <b style={{ background: 'black' }}>0.090</b></span>
-        //       <span>Testing Loss : <b style={{ background: 'black' }}>0.12</b></span>
-        //       <span>Forget Data : {selections[selectionId]}</span>
-        //       <span>Retain Data : 31-100</span>
-        //       <span>Blindspot Model : {models[modelId]}</span>
-        //       <span>Epochs : 2</span>
-        //       <span>Forget Data Loss : <b style={{ background: 'black' }}>21.63</b></span>
-        //       <span>Retain Data Loss : <b style={{ background: 'black' }}>9.97</b></span>
-        //     </div>
-        //     <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
-        //       <span>Dataset : {datasets[datasetId]}</span>
-        //       <span>Model : {models[modelId]}</span>
-        //       <span>Epochs : 100</span>
-        //       <span>Training Loss : 0.090</span>
-        //       <span>Testing Loss : 0.12</span>
-        //     </div>
-        //     <div>
-        //       <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={stateChange}>
-        //         {buttons[buttonId]}
-        //       </button>
-        //     </div>
-        //   </div>
-        // )
-        // Train Gold Model
-        buttonId === 8 ? (
-          <div>
-            <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
-              <span>Dataset : {datasets[datasetId]}</span>
-              <span>Model : {models[modelId]}</span>
-              <span>Epochs : 100</span>
-              <span>Forget Data : {selections[selectionId]}</span>
-              <span>Retain Data : 31-100</span>
-              <span>
-                Forget Data Loss : <b style={{ background: "black" }}>12.76</b>
-              </span>
-              <span>
-                Retain Data Loss : <b style={{ background: "black" }}>9.33</b>
-              </span>
-              <span>Blindspot Model : {models[modelId]}</span>
-              <span>Epochs : 2</span>
-              <span>
-                Forget Data Loss : <b style={{ background: "black" }}>21.63</b>
-              </span>
-              <span>
-                Retain Data Loss : <b style={{ background: "black" }}>9.97</b>
-              </span>
-              <span>Gold Model : {models[modelId]}</span>
-              <span>Epochs : 1</span>
-            </div>
-            <div className="mul-demo">
-              <Image
-                src={"demo-svg/mul-unlearning.svg"}
-                alt="load-data"
-                width="0"
-                height="0"
-                sizes="100vw"
-                className="mul-image w-full h-auto"
-              />
-            </div>
-            <div>
-              <button
-                className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-                onClick={stateChange}
-              >
-                {buttons[buttonId]}
-              </button>
-            </div>
-          </div>
-        ) : // Compare Three Models
-        buttonId === 9 ? (
-          <div>
-            <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
-              <span>Dataset : {datasets[datasetId]}</span>
-              <span>Model : {models[modelId]}</span>
-              <span>Epochs : 100</span>
-              <span>Forget Data : {selections[selectionId]}</span>
-              <span>Retain Data : 31-100</span>
-              <span>
-                Forget Data Loss : <b style={{ background: "black" }}>12.76</b>
-              </span>
-              <span>
-                Retain Data Loss : <b style={{ background: "black" }}>9.33</b>
-              </span>
-              <span>Blindspot Model : {models[modelId]}</span>
-              <span>Epochs : 2</span>
-              <span>
-                Forget Data Loss : <b style={{ background: "black" }}>21.63</b>
-              </span>
-              <span>
-                Retain Data Loss : <b style={{ background: "black" }}>9.97</b>
-              </span>
-              <span>Gold Model : {models[modelId]}</span>
-              <span>Epochs : 1</span>
-              <span>
-                Forget Data Loss : <b style={{ background: "black" }}>24.30</b>
-              </span>
-              <span>
-                Retain Data Loss : <b style={{ background: "black" }}>11.38</b>
-              </span>
-            </div>
-            <div className="mul-demo">
-              <Image
-                src={"demo-svg/mul-gold-train.svg"}
-                alt="load-data"
-                width="0"
-                height="0"
-                sizes="100vw"
-                className="mul-image w-full h-auto"
-              />
-            </div>
-            <div>
-              <button
-                className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-                onClick={stateChange}
-              >
-                {buttons[buttonId]}
-              </button>
-            </div>
-          </div>
-        ) : // Membership Inference Attack
-        buttonId === 10 ? (
-          <div className="flex flex-col items-center justify-center">
-            <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
-              <span>Dataset : {datasets[datasetId]}</span>
-              <span>Model : {models[modelId]}</span>
-              <span>Epochs : 100</span>
-              <span>Forget Data : {selections[selectionId]}</span>
-              <span>Retain Data : 31-100</span>
-              <span>
-                Forget Data Loss : <b style={{ background: "black" }}>12.76</b>
-              </span>
-              <span>
-                Retain Data Loss : <b style={{ background: "black" }}>9.33</b>
-              </span>
-              <span>Blindspot Model : {models[modelId]}</span>
-              <span>Epochs : 2</span>
-              <span>
-                Forget Data Loss : <b style={{ background: "black" }}>21.63</b>
-              </span>
-              <span>
-                Retain Data Loss : <b style={{ background: "black" }}>9.97</b>
-              </span>
-              <span>Gold Model : {models[modelId]}</span>
-              <span>Epochs : 1</span>
-              <span>
-                Forget Data Loss : <b style={{ background: "black" }}>24.30</b>
-              </span>
-              <span>
-                Retain Data Loss : <b style={{ background: "black" }}>11.38</b>
-              </span>
-            </div>
-            <div className="mul-demo">
-              <Image
-                src={"demo-svg/mul-evaluate-all-model.svg"}
-                alt="load-data"
-                width="0"
-                height="0"
-                sizes="100vw"
-                className="mul-image w-full h-auto"
-              />
-            </div>
-            <div>
-              <button
-                className="m-3 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-                onClick={stateChange}
-              >
-                {buttons[buttonId]}
-              </button>
-            </div>
-          </div>
-        ) : (
-          <div className="flex flex-col align-middle justify-center">
-            <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
-              <span>Model : {models[modelId]}</span>
-              <span>Forget Data : {selections[selectionId]}</span>
-              <span>Retain Data : 31-100</span>
-              <span>
-                Forget Data Loss : <b style={{ background: "black" }}>12.76</b>
-              </span>
-              <span>
-                Retain Data Loss : <b style={{ background: "black" }}>9.33</b>
-              </span>
-              <span>Blindspot Model : {models[modelId]}</span>
-              <span>
-                Forget Data Loss : <b style={{ background: "black" }}>21.63</b>
-              </span>
-              <span>
-                Retain Data Loss : <b style={{ background: "black" }}>9.97</b>
-              </span>
-              <span>Gold Model : {models[modelId]}</span>
-              <span>
-                Forget Data Loss : <b style={{ background: "black" }}>24.30</b>
-              </span>
-              <span>
-                Retain Data Loss : <b style={{ background: "black" }}>11.38</b>
-              </span>
-            </div>
-            <div className="m-1 text-center" style={{ width: "500px" }}>
-              <h1 className="text-xl font-bold mb-4">Loss Comparison Chart</h1>
-              <BarChart />
-            </div>
-            {/* <Image
-                                  src="/results.png"
-                                  alt="Results"
-                                  width={600}
-                                  height={400}
-                                  style={{ border: '2px solid green', borderRadius: '10px', padding: '10px' }}
-                                  className="m-3"
-                                /> */}
-            <button
-              className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
-              onClick={() => {
-                window.location.reload();
-              }}
-            >
-              HomePage
-            </button>
-          </div>
-        )}
+                      <button
+                        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+                        onClick={stateChange}
+                      >
+                        {buttons[buttonId]}
+                      </button>
+                    </div>
+                  </div>
+                ) : // Evaluate Model
+                  buttonId === 5 ? (
+                    <div>
+                      <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
+                        <span>Dataset : {datasets[datasetId]}</span>
+                        <span>Model : {models[modelId]}</span>
+                        <span>Epochs : 100</span>
+                        <span>Forget Data : {selections[selectionId]}</span>
+                        <span>Retain Data : 31-100</span>
+                      </div>
+                      <div className="mul-demo">
+                        <Image
+                          src={"demo-svg/mul-forget-retain.svg"}
+                          alt="load-data"
+                          width="0"
+                          height="0"
+                          sizes="100vw"
+                          className="mul-image w-full h-auto"
+                        />
+                      </div>
+                      <button
+                        className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+                        onClick={stateChange}
+                      >
+                        {buttons[buttonId]}
+                      </button>
+                    </div>
+                  ) : // Train blindspot model
+                    buttonId === 6 ? (
+                      <div>
+                        <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
+                          <span>Dataset : {datasets[datasetId]}</span>
+                          <span>Model : {models[modelId]}</span>
+                          <span>Epochs : 100</span>
+                          <span>Forget Data : {selections[selectionId]}</span>
+                          <span>Retain Data : 31-100</span>
+                          <span>
+                            Forget Data Loss : <b style={{ background: "black" }}>12.76</b>
+                          </span>
+                          <span>
+                            Retain Data Loss : <b style={{ background: "black" }}>9.33</b>
+                          </span>
+                        </div>
+                        <div className="mul-demo">
+                          <Image
+                            src={"demo-svg/mul-evaluate-model.svg"}
+                            alt="load-data"
+                            width="0"
+                            height="0"
+                            sizes="100vw"
+                            className="mul-image w-full h-auto"
+                          />
+                        </div>
+                        <div>
+                          <button
+                            className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+                            onClick={stateChange}
+                          >
+                            {buttons[buttonId]}
+                          </button>
+                        </div>
+                      </div>
+                    ) : // Start Unlearning
+                      buttonId === 7 ? (
+                        <div>
+                          <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
+                            <span>Dataset : {datasets[datasetId]}</span>
+                            <span>Model : {models[modelId]}</span>
+                            <span>Epochs : 100</span>
+                            <span>Forget Data : {selections[selectionId]}</span>
+                            <span>Retain Data : 31-100</span>
+                            <span>
+                              Forget Data Loss : <b style={{ background: "black" }}>12.76</b>
+                            </span>
+                            <span>
+                              Retain Data Loss : <b style={{ background: "black" }}>9.33</b>
+                            </span>
+                            <span>Blindspot Model : {models[modelId]}</span>
+                            <span>Epochs : 2</span>
+                          </div>
+                          <div className="mul-demo">
+                            <Image
+                              src={"demo-svg/mul-blindspot-train.svg"}
+                              alt="load-data"
+                              width="0"
+                              height="0"
+                              sizes="100vw"
+                              className="mul-image w-full h-auto"
+                            />
+                          </div>
+                          <div>
+                            <button
+                              className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+                              onClick={stateChange}
+                            >
+                              {buttons[buttonId]}
+                            </button>
+                          </div>
+                        </div>
+                      ) : // Compare Testing results
+                        // : buttonId === 8 ? (
+                        //   <div>
+                        //     <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
+                        //       <span>Dataset : {datasets[datasetId]}</span>
+                        //       <span>Model : {models[modelId]}</span>
+                        //       <span>Epochs : 100</span>
+                        //       <span>Training Loss : <b style={{ background: 'black' }}>0.090</b></span>
+                        //       <span>Testing Loss : <b style={{ background: 'black' }}>0.12</b></span>
+                        //       <span>Forget Data : {selections[selectionId]}</span>
+                        //       <span>Retain Data : 31-100</span>
+                        //       <span>Blindspot Model : {models[modelId]}</span>
+                        //       <span>Epochs : 2</span>
+                        //       <span>Forget Data Loss : <b style={{ background: 'black' }}>21.63</b></span>
+                        //       <span>Retain Data Loss : <b style={{ background: 'black' }}>9.97</b></span>
+                        //     </div>
+                        //     <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
+                        //       <span>Dataset : {datasets[datasetId]}</span>
+                        //       <span>Model : {models[modelId]}</span>
+                        //       <span>Epochs : 100</span>
+                        //       <span>Training Loss : 0.090</span>
+                        //       <span>Testing Loss : 0.12</span>
+                        //     </div>
+                        //     <div>
+                        //       <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={stateChange}>
+                        //         {buttons[buttonId]}
+                        //       </button>
+                        //     </div>
+                        //   </div>
+                        // )
+                        // Train Gold Model
+                        buttonId === 8 ? (
+                          <div>
+                            <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
+                              <span>Dataset : {datasets[datasetId]}</span>
+                              <span>Model : {models[modelId]}</span>
+                              <span>Epochs : 100</span>
+                              <span>Forget Data : {selections[selectionId]}</span>
+                              <span>Retain Data : 31-100</span>
+                              <span>
+                                Forget Data Loss : <b style={{ background: "black" }}>12.76</b>
+                              </span>
+                              <span>
+                                Retain Data Loss : <b style={{ background: "black" }}>9.33</b>
+                              </span>
+                              <span>Blindspot Model : {models[modelId]}</span>
+                              <span>Epochs : 2</span>
+                              <span>
+                                Forget Data Loss : <b style={{ background: "black" }}>21.63</b>
+                              </span>
+                              <span>
+                                Retain Data Loss : <b style={{ background: "black" }}>9.97</b>
+                              </span>
+                              <span>Gold Model : {models[modelId]}</span>
+                              <span>Epochs : 1</span>
+                            </div>
+                            <div className="mul-demo">
+                              <Image
+                                src={"demo-svg/mul-unlearning.svg"}
+                                alt="load-data"
+                                width="0"
+                                height="0"
+                                sizes="100vw"
+                                className="mul-image w-full h-auto"
+                              />
+                            </div>
+                            <div>
+                              <button
+                                className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+                                onClick={stateChange}
+                              >
+                                {buttons[buttonId]}
+                              </button>
+                            </div>
+                          </div>
+                        ) : // Compare Three Models
+                          buttonId === 9 ? (
+                            <div>
+                              <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
+                                <span>Dataset : {datasets[datasetId]}</span>
+                                <span>Model : {models[modelId]}</span>
+                                <span>Epochs : 100</span>
+                                <span>Forget Data : {selections[selectionId]}</span>
+                                <span>Retain Data : 31-100</span>
+                                <span>
+                                  Forget Data Loss : <b style={{ background: "black" }}>12.76</b>
+                                </span>
+                                <span>
+                                  Retain Data Loss : <b style={{ background: "black" }}>9.33</b>
+                                </span>
+                                <span>Blindspot Model : {models[modelId]}</span>
+                                <span>Epochs : 2</span>
+                                <span>
+                                  Forget Data Loss : <b style={{ background: "black" }}>21.63</b>
+                                </span>
+                                <span>
+                                  Retain Data Loss : <b style={{ background: "black" }}>9.97</b>
+                                </span>
+                                <span>Gold Model : {models[modelId]}</span>
+                                <span>Epochs : 1</span>
+                                <span>
+                                  Forget Data Loss : <b style={{ background: "black" }}>24.30</b>
+                                </span>
+                                <span>
+                                  Retain Data Loss : <b style={{ background: "black" }}>11.38</b>
+                                </span>
+                              </div>
+                              <div className="mul-demo">
+                                <Image
+                                  src={"demo-svg/mul-gold-train.svg"}
+                                  alt="load-data"
+                                  width="0"
+                                  height="0"
+                                  sizes="100vw"
+                                  className="mul-image w-full h-auto"
+                                />
+                              </div>
+                              <div>
+                                <button
+                                  className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+                                  onClick={stateChange}
+                                >
+                                  {buttons[buttonId]}
+                                </button>
+                              </div>
+                            </div>
+                          ) : // Membership Inference Attack
+                            buttonId === 10 ? (
+                              <div className="flex flex-col items-center justify-center">
+                                <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
+                                  <span>Dataset : {datasets[datasetId]}</span>
+                                  <span>Model : {models[modelId]}</span>
+                                  <span>Epochs : 100</span>
+                                  <span>Forget Data : {selections[selectionId]}</span>
+                                  <span>Retain Data : 31-100</span>
+                                  <span>
+                                    Forget Data Loss : <b style={{ background: "black" }}>12.76</b>
+                                  </span>
+                                  <span>
+                                    Retain Data Loss : <b style={{ background: "black" }}>9.33</b>
+                                  </span>
+                                  <span>Blindspot Model : {models[modelId]}</span>
+                                  <span>Epochs : 2</span>
+                                  <span>
+                                    Forget Data Loss : <b style={{ background: "black" }}>21.63</b>
+                                  </span>
+                                  <span>
+                                    Retain Data Loss : <b style={{ background: "black" }}>9.97</b>
+                                  </span>
+                                  <span>Gold Model : {models[modelId]}</span>
+                                  <span>Epochs : 1</span>
+                                  <span>
+                                    Forget Data Loss : <b style={{ background: "black" }}>24.30</b>
+                                  </span>
+                                  <span>
+                                    Retain Data Loss : <b style={{ background: "black" }}>11.38</b>
+                                  </span>
+                                </div>
+                                <div className="mul-demo">
+                                  <Image
+                                    src={"demo-svg/mul-evaluate-all-model.svg"}
+                                    alt="load-data"
+                                    width="0"
+                                    height="0"
+                                    sizes="100vw"
+                                    className="mul-image w-full h-auto"
+                                  />
+                                </div>
+                                <div>
+                                  <button
+                                    className="m-3 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+                                    onClick={stateChange}
+                                  >
+                                    {buttons[buttonId]}
+                                  </button>
+                                </div>
+                              </div>
+                            ) : (
+                              <div className="flex flex-col align-middle justify-center">
+                                <div className="absolute left-0 top-0 p-5 flex flex-col text-green-500">
+                                  <span>Model : {models[modelId]}</span>
+                                  <span>Forget Data : {selections[selectionId]}</span>
+                                  <span>Retain Data : 31-100</span>
+                                  <span>
+                                    Forget Data Loss : <b style={{ background: "black" }}>12.76</b>
+                                  </span>
+                                  <span>
+                                    Retain Data Loss : <b style={{ background: "black" }}>9.33</b>
+                                  </span>
+                                  <span>Blindspot Model : {models[modelId]}</span>
+                                  <span>
+                                    Forget Data Loss : <b style={{ background: "black" }}>21.63</b>
+                                  </span>
+                                  <span>
+                                    Retain Data Loss : <b style={{ background: "black" }}>9.97</b>
+                                  </span>
+                                  <span>Gold Model : {models[modelId]}</span>
+                                  <span>
+                                    Forget Data Loss : <b style={{ background: "black" }}>24.30</b>
+                                  </span>
+                                  <span>
+                                    Retain Data Loss : <b style={{ background: "black" }}>11.38</b>
+                                  </span>
+                                </div>
+                                <div className="m-1 text-center" style={{ width: "500px" }}>
+                                  <div className="m-1 text-center" style={{ width: "500px", backgroundColor: "#f9f9f9", padding: "20px", borderRadius: "8px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
+                                    <h1 className="text-xl font-bold mb-4" style={{ fontSize: "1.5rem", color: "#4a4a4a" }}>Reference</h1>
+
+                                    <div className="mb-2">
+                                      <a
+                                        href="https://proceedings.mlr.press/v202/tarun23a/tarun23a.pdf"
+                                        style={{ color: "#1d4ed8", textDecoration: "underline", fontWeight: "500" }}
+                                        target="_blank" rel="noopener noreferrer"
+                                      >
+                                        Deep Regression Unlearning
+                                      </a>
+                                      <span style={{ display: "inline-block", backgroundColor: "#e0e7ff", color: "#1e3a8a", fontSize: "0.75rem", padding: "2px 8px", borderRadius: "12px", marginLeft: "8px" }}>
+                                        PMLR
+                                      </span>
+                                    </div>
+
+                                    <div className="mb-2">
+                                      <a
+                                        href="https://ieeexplore.ieee.org/document/10113700"
+                                        style={{ color: "#1d4ed8", textDecoration: "underline", fontWeight: "500" }}
+                                        target="_blank" rel="noopener noreferrer"
+                                      >
+                                        Fast Yet Effective Machine Unlearning
+                                      </a>
+                                      <span style={{ display: "inline-block", backgroundColor: "#e0e7ff", color: "#1e3a8a", fontSize: "0.75rem", padding: "2px 8px", borderRadius: "12px", marginLeft: "8px" }}>
+                                        IEEE Xplore
+                                      </span>
+                                    </div>
+
+                                    <div className="mb-2">
+                                      <a
+                                        href="https://dl.acm.org/doi/10.1109/TIFS.2023.3265506"
+                                        style={{ color: "#1d4ed8", textDecoration: "underline", fontWeight: "500" }}
+                                        target="_blank" rel="noopener noreferrer"
+                                      >
+                                        Zero-Shot Machine Unlearning
+                                      </a>
+                                      <span style={{ display: "inline-block", backgroundColor: "#e0e7ff", color: "#1e3a8a", fontSize: "0.75rem", padding: "2px 8px", borderRadius: "12px", marginLeft: "8px" }}>
+                                        ACM Digital Library
+                                      </span>
+                                    </div>
+
+                                    <h1 className="text-xl font-bold mb-4" style={{ fontSize: "1.5rem", color: "#4a4a4a", marginTop: "20px" }}>Our Research Lab</h1>
+
+                                    <div className="mb-2">
+                                      <a
+                                        href="https://respailab.github.io"
+                                        style={{ color: "#1d4ed8", textDecoration: "underline", fontWeight: "500" }}
+                                        target="_blank" rel="noopener noreferrer"
+                                      >
+                                        RespAI Lab
+                                      </a>
+                                    </div>
+
+                                    <button
+                                      className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+                                      style={{
+                                        backgroundColor: "#3b82f6",
+                                        color: "white",
+                                        fontWeight: "bold",
+                                        padding: "10px 20px",
+                                        borderRadius: "8px",
+                                        border: "none",
+                                        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+                                        cursor: "pointer",
+                                        transition: "background-color 0.2s, transform 0.2s",
+                                      }}
+                                      onMouseOver={(e) => {
+                                        e.currentTarget.style.backgroundColor = "#2563eb";
+                                      }}
+                                      onMouseOut={(e) => {
+                                        e.currentTarget.style.backgroundColor = "#3b82f6";
+                                      }}
+                                      onClick={() => {
+                                        window.location.reload();
+                                      }}
+                                    >
+                                      HomePage
+                                    </button>
+                                  </div>
+                                </div>
+
+                              </div>
+                            )}
         <div className="flex flex-col items-center justify-center absolute bottom-0 right-10">
-          <span style={{ fontSize: "15px", margin: 0, padding: 0 }}>  
+          <span style={{ fontSize: "15px", margin: 0, padding: 0 }}>
             Created By :&nbsp;
             <a href="https://murarimandal.github.io" target="_blank">
               Dr. Murari Mandal
