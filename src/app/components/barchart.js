@@ -5,50 +5,22 @@ import { Margarine } from 'next/font/google';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const BarChart = () => {
-    const data = {
-        labels: ['Original Model', 'Gold Model', 'Unlearned Model', 'FineTune', 'Gaussian Amn'],
-        datasets: [
-            {
-                label: 'Retain Loss',
-                data: [9.33, 11.38, 9.97, 9.79, 9.81],
-                backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                // borderColor: 'rgba(54, 162, 235, 1)',
-                borderColor: 'green',
-                borderWidth: 1,
-                barThickness: 30,
-            },
-            {
-                label: 'Forget Loss',
-                data: [12.76, 24.30, 21.63, 14.82, 17.06],
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                // borderColor: 'rgba(255, 99, 132, 1)',
-                borderColor: 'green',
-                borderWidth: 1,
-                barThickness: 30,
-            },
-        ],
+const BarChart = ({ data, options }) => {
+    // Fallback if no data provided (e.g., during dev) to prevent crash
+    const defaultData = {
+        labels: [],
+        datasets: []
     };
 
-    const options = {
+    const defaultOptions = {
         responsive: true,
         plugins: {
-            legend: {
-                position: 'top',
-            },
-            title: {
-                display: true,
-                text: 'Loss Comparison',
-            },
-        },
-        scales: {
-            y: {
-                beginAtZero: true,
-            },
-        },
+            legend: { position: 'top' },
+            title: { display: true, text: 'Chart' },
+        }
     };
 
-    return <Bar data={data} options={options} height={200} />;
+    return <Bar data={data || defaultData} options={options || defaultOptions} height={200} />;
 };
 
 export default BarChart;
